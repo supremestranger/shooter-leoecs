@@ -28,7 +28,11 @@ public class EcsStartup : MonoBehaviour
             .Inject(runtimeData);
 
         fixedUpdateSystems
-            .Add(new PlayerMoveSystem());
+            .Add(new PlayerMoveSystem())
+            .Add(new CameraFollowSystem())
+            .Inject(configuration)
+            .Inject(sceneData)
+            .Inject(runtimeData);
         
         updateSystems.Init();
         fixedUpdateSystems.Init();
