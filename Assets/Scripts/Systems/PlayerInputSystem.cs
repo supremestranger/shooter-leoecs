@@ -12,6 +12,7 @@ public class PlayerInputSystem : IEcsRunSystem
             ref var input = ref filter.Get1(i);
             
             input.moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
+            input.shootInput = Input.GetMouseButton(0);
         }
     }
 }

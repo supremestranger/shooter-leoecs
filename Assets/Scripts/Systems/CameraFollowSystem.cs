@@ -6,7 +6,8 @@ public class CameraFollowSystem : IEcsRunSystem
     private EcsFilter<Player> filter;
     private SceneData sceneData;
     private StaticData staticData;
-    private Vector3 currentVelocity;
+    // Хранение лишних данных в системах - не всегда хорошая идея. Но если вы уверены, что больше они нигде не понадобятся, это допустимо.
+    private Vector3 currentVelocity; // это поле нужно для работы метода Vector3.SmoothDamp
 
     public void Run()
     {

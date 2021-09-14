@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 2836004475591695743, guid: f432554f564e69242897607d34218939, type: 3}
   playerSpeed: 20
-  smoothTime: 0.2
+  smoothTime: 0.3
   followOffset: {x: 0, y: 10, z: -10}
