@@ -11,13 +11,19 @@ public class WeaponShootSystem : IEcsRunSystem
         {
             ref var weapon = ref filter.Get1(i);
 
-            if (Time.time >= weapon.lastTimeShot + weapon.shootInterval && weapon.currentInMagazine > 0)
+            ref var entity = ref filter.GetEntity(i);
+            entity.Del<Shoot>();
+            
+            if (weapon.currentInMagazine > 0)
             {
-                weapon.lastTimeShot = Time.time;
                 weapon.currentInMagazine--;
-                ref var entity = ref filter.GetEntity(i);
+                
                 ref var spawnProjectile = ref entity.Get<SpawnProjectile>();
-                entity.Del<Shoot>();
+            }
+
+            else
+            { 
+                ref var reload = ref weapon.owner.Get<TryReload>();
             }
         }
     }

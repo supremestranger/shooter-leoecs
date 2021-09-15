@@ -17,7 +17,10 @@ public class EcsStartup : MonoBehaviour
         updateSystems = new EcsSystems(ecsWorld);
         fixedUpdateSystems = new EcsSystems(ecsWorld);
         RuntimeData runtimeData = new RuntimeData();
-
+#if UNITY_EDITOR
+        Leopotam.Ecs.UnityIntegration.EcsWorldObserver.Create (ecsWorld);
+        Leopotam.Ecs.UnityIntegration.EcsSystemsObserver.Create (updateSystems);
+#endif
         updateSystems
             .Add(new PlayerInitSystem())
             .Add(new PlayerInputSystem())
@@ -26,6 +29,8 @@ public class EcsStartup : MonoBehaviour
             .Add(new WeaponShootSystem())
             .Add(new SpawnProjectileSystem())
             .Add(new ProjectileMoveSystem())
+            .Add(new ProjectileHitSystem())
+            .Add(new ReloadingSystem())
             .Inject(configuration)
             .Inject(sceneData)
             .Inject(runtimeData);

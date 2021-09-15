@@ -14,6 +14,7 @@ public class PlayerInitSystem : IEcsInitSystem
         ref var player = ref playerEntity.Get<Player>();
         ref var inputData = ref playerEntity.Get<PlayerInputData>(); 
         ref var hasWeapon = ref playerEntity.Get<HasWeapon>();
+        ref var animatorRef = ref playerEntity.Get<AnimatorRef>();
         
         GameObject playerGO = Object.Instantiate(staticData.playerPrefab, sceneData.playerSpawnPoint.position,
             Quaternion.identity);
@@ -30,16 +31,15 @@ public class PlayerInitSystem : IEcsInitSystem
         weapon.projectileRadius = weaponView.projectileRadius;
         weapon.projectileSocket = weaponView.projectileSocket;
         weapon.projectileSpeed = weaponView.projectileSpeed;
-        weapon.reloadDuration = weaponView.reloadDuration;
-        weapon.shootInterval = weaponView.shootInterval;
         weapon.totalAmmo = weaponView.totalAmmo;
         weapon.weaponDamage = weaponView.weaponDamage;
         weapon.currentInMagazine = weaponView.currentInMagazine;
-        weapon.lastTimeShot = 0f;
         weapon.maxInMagazine = weaponView.maxInMagazine;
 
         hasWeapon.weapon = weaponEntity;
 
         playerGO.GetComponent<PlayerView>().entity = playerEntity;
+
+        animatorRef.animator = player.playerAnimator;
     }
 }

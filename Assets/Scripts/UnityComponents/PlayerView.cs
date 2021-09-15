@@ -9,4 +9,9 @@ public class PlayerView : MonoBehaviour
     {
         entity.Get<HasWeapon>().weapon.Get<Shoot>();
     }
+
+    public void Reload()
+    {
+        entity.Get<HasWeapon>().weapon.Get<ReloadingFinished>();
+    }
 }

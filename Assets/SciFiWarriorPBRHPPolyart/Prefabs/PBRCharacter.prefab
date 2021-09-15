@@ -2712,14 +2712,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 8089236662387531238, guid: 4388c42398c1aed4882c7a8b90bca297, type: 3}
   projectileSocket: {fileID: 221997561083008042}
-  reloadDuration: 1
   projectileSpeed: 70
   projectileRadius: 1
-  shootInterval: 0.69
   weaponDamage: 1
-  currentInMagazine: 33
-  maxInMagazine: 48
-  totalAmmo: 109
+  currentInMagazine: 3
+  maxInMagazine: 4
+  totalAmmo: 5
 --- !u!114 &3001667413317271698
 MonoBehaviour:
   m_ObjectHideFlags: 0
