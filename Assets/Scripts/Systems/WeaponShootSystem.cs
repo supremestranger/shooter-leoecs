@@ -4,6 +4,7 @@ using UnityEngine;
 public class WeaponShootSystem : IEcsRunSystem
 {
     private EcsFilter<Weapon, Shoot> filter;
+    private UI ui;
     
     public void Run()
     {
@@ -17,7 +18,10 @@ public class WeaponShootSystem : IEcsRunSystem
             if (weapon.currentInMagazine > 0)
             {
                 weapon.currentInMagazine--;
-                
+                if (weapon.owner.Has<Player>())
+                {
+                    ui.gameScreen.SetAmmo(weapon.currentInMagazine, weapon.totalAmmo);
+                }
                 ref var spawnProjectile = ref entity.Get<SpawnProjectile>();
             }
 

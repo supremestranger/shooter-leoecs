@@ -1,9 +1,11 @@
 using Leopotam.Ecs;
+using UnityEngine;
 
 public class ReloadingSystem : IEcsRunSystem
 {
-    private EcsFilter<TryReload, AnimatorRef> tryReloadFilter;
+    private EcsFilter<TryReload, AnimatorRef>.Exclude<Reloading> tryReloadFilter;
     private EcsFilter<Weapon, ReloadingFinished> reloadingFinishedFilter;
+    private UI ui;
     
     public void Run()
     {
@@ -14,7 +16,7 @@ public class ReloadingSystem : IEcsRunSystem
             animatorRef.animator.SetTrigger("Reload");
 
             ref var entity = ref tryReloadFilter.GetEntity(i);
-            entity.Del<TryReload>();
+            entity.Get<Reloading>();
         }
 
         foreach (var i in reloadingFinishedFilter)
@@ -31,6 +33,11 @@ public class ReloadingSystem : IEcsRunSystem
                 : weapon.totalAmmo;
 
             ref var entity = ref reloadingFinishedFilter.GetEntity(i);
+            if (weapon.owner.Has<Player>())
+            {
+                ui.gameScreen.SetAmmo(weapon.currentInMagazine, weapon.totalAmmo);
+            }
+            weapon.owner.Del<Reloading>();
             entity.Del<ReloadingFinished>();
         }
     }

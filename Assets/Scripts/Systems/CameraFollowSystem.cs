@@ -15,9 +15,9 @@ public class CameraFollowSystem : IEcsRunSystem
         {
             ref var player = ref filter.Get1(i);
             
-          //  var currentPos = sceneData.mainCamera.transform.position;
-         //   currentPos = Vector3.SmoothDamp(currentPos, player.playerTransform.position + staticData.followOffset, ref currentVelocity, staticData.smoothTime);
-         //   sceneData.mainCamera.transform.position = currentPos;
+            var currentPos = sceneData.mainCamera.transform.position;
+            currentPos = Vector3.SmoothDamp(currentPos, player.playerTransform.position + staticData.followOffset, ref currentVelocity, staticData.smoothTime);
+            sceneData.mainCamera.transform.position = currentPos;
         }
     }
 }

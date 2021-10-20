@@ -2715,7 +2715,7 @@ MonoBehaviour:
   projectileSpeed: 70
   projectileRadius: 1
   weaponDamage: 1
-  currentInMagazine: 3
+  currentInMagazine: 4
   maxInMagazine: 4
   totalAmmo: 5
 --- !u!114 &3001667413317271698

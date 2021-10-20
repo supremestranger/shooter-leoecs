@@ -6,6 +6,7 @@ public class PlayerInitSystem : IEcsInitSystem
     private EcsWorld ecsWorld;
     private StaticData staticData;
     private SceneData sceneData;
+    private UI ui;
     
     public void Init()
     {
@@ -35,6 +36,8 @@ public class PlayerInitSystem : IEcsInitSystem
         weapon.weaponDamage = weaponView.weaponDamage;
         weapon.currentInMagazine = weaponView.currentInMagazine;
         weapon.maxInMagazine = weaponView.maxInMagazine;
+
+        ui.gameScreen.SetAmmo(weapon.currentInMagazine, weapon.totalAmmo);
 
         hasWeapon.weapon = weaponEntity;
 
