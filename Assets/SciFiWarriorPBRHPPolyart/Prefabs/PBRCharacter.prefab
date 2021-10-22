@@ -2619,8 +2619,8 @@ GameObject:
   - component: {fileID: 2836004473841745626}
   - component: {fileID: 4988232404260135074}
   - component: {fileID: 3383655439314722565}
-  - component: {fileID: 3045938098298598705}
   - component: {fileID: 3001667413317271698}
+  - component: {fileID: 5682833258543229593}
   m_Layer: 0
   m_Name: PBRCharacter
   m_TagString: Untagged
@@ -2698,26 +2698,6 @@ CapsuleCollider:
   m_Height: 2.114623
   m_Direction: 1
   m_Center: {x: 0, y: 0.9619837, z: 0}
---- !u!114 &3045938098298598705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2836004475591695743}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f433a5c69a0547e48a0d5c4cb1f92d51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 8089236662387531238, guid: 4388c42398c1aed4882c7a8b90bca297, type: 3}
-  projectileSocket: {fileID: 221997561083008042}
-  projectileSpeed: 70
-  projectileRadius: 1
-  weaponDamage: 1
-  currentInMagazine: 3
-  maxInMagazine: 4
-  totalAmmo: 5
 --- !u!114 &3001667413317271698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2730,6 +2710,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4f9ea60563a4559a2c929cd4af9f7cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5682833258543229593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2836004475591695743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1b02a7d5aea891468619e975ce93515, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 8089236662387531238, guid: 4388c42398c1aed4882c7a8b90bca297, type: 3}
+  projectileSocket: {fileID: 221997561083008042}
+  projectileSpeed: 30
+  projectileRadius: 1
+  weaponDamage: 25
+  currentInMagazine: 6
+  maxInMagazine: 6
+  totalAmmo: 30
 --- !u!1 &4038861936819825442
 GameObject:
   m_ObjectHideFlags: 0

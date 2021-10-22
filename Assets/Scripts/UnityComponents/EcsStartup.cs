@@ -1,4 +1,3 @@
-using System;
 using Leopotam.Ecs;
 using UnityEngine;
 
@@ -6,6 +5,7 @@ public class EcsStartup : MonoBehaviour
 {
     public StaticData configuration;
     public SceneData sceneData;
+    public UI ui;
 
     private EcsWorld ecsWorld;
     private EcsSystems updateSystems;
@@ -23,7 +23,9 @@ public class EcsStartup : MonoBehaviour
 #endif
         updateSystems
             .Add(new PlayerInitSystem())
+            .OneFrame<TryReload>()
             .Add(new PlayerInputSystem())
+            .Add(new PauseSystem())
             .Add(new PlayerRotationSystem())
             .Add(new PlayerAnimationSystem())
             .Add(new WeaponShootSystem())
@@ -33,6 +35,7 @@ public class EcsStartup : MonoBehaviour
             .Add(new ReloadingSystem())
             .Inject(configuration)
             .Inject(sceneData)
+            .Inject(ui)
             .Inject(runtimeData);
 
         fixedUpdateSystems

@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerInputSystem : IEcsRunSystem
 {
     private EcsFilter<PlayerInputData, HasWeapon> filter;
+    private EcsWorld ecsWorld;
     
     public void Run()
     {
@@ -23,6 +24,11 @@ public class PlayerInputSystem : IEcsRunSystem
                     ref var entity = ref filter.GetEntity(i);
                     entity.Get<TryReload>();
                 }
+            }
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                ecsWorld.NewEntity().Get<PauseEvent>();
             }
         }
     }

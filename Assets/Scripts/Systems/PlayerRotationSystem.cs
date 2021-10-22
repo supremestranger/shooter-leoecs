@@ -5,9 +5,11 @@ public class PlayerRotationSystem : IEcsRunSystem
 {
     private EcsFilter<Player> filter;
     private SceneData sceneData;
+    private RuntimeData runtimeData;
 
     public void Run()
     {
+        if (runtimeData.isPaused) return;
         foreach (var i in filter)
         {
             ref var player = ref filter.Get1(i);
