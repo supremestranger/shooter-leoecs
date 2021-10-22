@@ -2724,7 +2724,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 8089236662387531238, guid: 4388c42398c1aed4882c7a8b90bca297, type: 3}
   projectileSocket: {fileID: 221997561083008042}
-  projectileSpeed: 55
+  projectileSpeed: 30
   projectileRadius: 1
   weaponDamage: 25
   currentInMagazine: 6

@@ -25,6 +25,7 @@ public class EcsStartup : MonoBehaviour
             .Add(new PlayerInitSystem())
             .OneFrame<TryReload>()
             .Add(new PlayerInputSystem())
+            .Add(new PauseSystem())
             .Add(new PlayerRotationSystem())
             .Add(new PlayerAnimationSystem())
             .Add(new WeaponShootSystem())
