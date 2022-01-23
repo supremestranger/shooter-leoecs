@@ -1,5 +1,6 @@
 using Leopotam.Ecs;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 internal class PauseSystem : IEcsRunSystem
 {
@@ -12,6 +13,13 @@ internal class PauseSystem : IEcsRunSystem
         foreach (var i in filter)
         {
             filter.GetEntity(i).Del<PauseEvent>();
+
+            if (runtimeData.gameOver)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                continue;
+            }
+            
             runtimeData.isPaused = !runtimeData.isPaused;
             Time.timeScale = runtimeData.isPaused ? 0f : 1f;
             ui.pauseScreen.Show(runtimeData.isPaused);

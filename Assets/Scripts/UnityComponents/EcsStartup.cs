@@ -10,7 +10,7 @@ public class EcsStartup : MonoBehaviour
     private EcsWorld ecsWorld;
     private EcsSystems updateSystems;
     private EcsSystems fixedUpdateSystems;
-
+    
     private void Start()
     {
         ecsWorld = new EcsWorld();
@@ -23,11 +23,17 @@ public class EcsStartup : MonoBehaviour
 #endif
         updateSystems
             .Add(new PlayerInitSystem())
+            .Add(new EnemyInitSystem())
             .OneFrame<TryReload>()
             .Add(new PlayerInputSystem())
             .Add(new PauseSystem())
             .Add(new PlayerRotationSystem())
             .Add(new PlayerAnimationSystem())
+            .Add(new EnemyIdleSystem())
+            .Add(new EnemyFollowSystem())
+            .Add(new DamageSystem())
+            .Add(new EnemyDeathSystem())
+            .Add(new PlayerDeathSystem())
             .Add(new WeaponShootSystem())
             .Add(new SpawnProjectileSystem())
             .Add(new ProjectileMoveSystem())

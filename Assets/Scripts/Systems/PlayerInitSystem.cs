@@ -7,7 +7,8 @@ public class PlayerInitSystem : IEcsInitSystem
     private StaticData staticData;
     private SceneData sceneData;
     private UI ui;
-    
+    private RuntimeData runtimeData;
+
     public void Init()
     {
         EcsEntity playerEntity = ecsWorld.NewEntity();
@@ -16,6 +17,8 @@ public class PlayerInitSystem : IEcsInitSystem
         ref var inputData = ref playerEntity.Get<PlayerInputData>(); 
         ref var hasWeapon = ref playerEntity.Get<HasWeapon>();
         ref var animatorRef = ref playerEntity.Get<AnimatorRef>();
+        ref var health = ref playerEntity.Get<Health>();
+        ref var transformRef = ref playerEntity.Get<TransformRef>();
         
         GameObject playerGO = Object.Instantiate(staticData.playerPrefab, sceneData.playerSpawnPoint.position,
             Quaternion.identity);
@@ -36,6 +39,11 @@ public class PlayerInitSystem : IEcsInitSystem
         weapon.weaponDamage = weaponView.weaponDamage;
         weapon.currentInMagazine = weaponView.currentInMagazine;
         weapon.maxInMagazine = weaponView.maxInMagazine;
+
+        health.value = staticData.playerHealth;
+
+        transformRef.transform = playerGO.transform;
+        runtimeData.playerEntity = playerEntity;
 
         ui.gameScreen.SetAmmo(weapon.currentInMagazine, weapon.totalAmmo);
 

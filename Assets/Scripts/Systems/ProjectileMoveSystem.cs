@@ -23,7 +23,6 @@ public class ProjectileMoveSystem : IEcsRunSystem
                 ref var entity = ref filter.GetEntity(i);
                 ref var projectileHit = ref entity.Get<ProjectileHit>();
                 projectileHit.raycastHit = hitInfo;
-                Debug.Log("Hit");
             }
 
             projectile.previousPos = projectile.projectileGO.transform.position;
